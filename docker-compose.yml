@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    image: bakery-website:latest
+    container_name: bakery-website
+    ports:
+      - "8080:80"
+    restart: unless-stopped
