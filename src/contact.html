@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us | Bakery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-container">
+      <img src="images/logo.png" alt="Bakery Logo">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="btn">ORDER NOW</button>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-info ">
+        <h2>Contact Us</h2>
+        <p>We’d love to hear from you! Reach out for any questions or orders. </p>
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3401.381404164171!2d34.4457949245829!3d31.513682974216955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDMwJzQ5LjMiTiAzNMKwMjYnMzUuNiJF!5e0!3m2!1sar!2s!4v1769519881315!5m2!1sar!2s"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h2>Send us a message</h2>
+         <form id="form">
+          <div>
+            <label for="name">Name</label><br>
+            <input type="text" id="name" name="name" placeholder="Enter your Name">
+            <div class="error" id="nameError"></div>
+          </div>
+
+          <div>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" placeholder="Enter your Email">
+            <div class="error" id="emailError"></div>
+          </div>
+
+          <div>
+            <label for="subject">Subject</label><br>
+            <input type="text" id="subject" name="subject" placeholder="Enter your Subject">
+            <div class="error" id="subjectError"></div>
+          </div>
+
+          <div>
+            <label for="message">Message</label><br>
+            <textarea id="message" name="message" placeholder="Your Message" rows="6" cols="30"></textarea>
+            <div class="error" id="messageError"></div>
+          </div>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <img src="images/logo.png" alt="Bakery Logo" class="footer-logo">
+        <p>
+          Handcrafted baked goods made fresh daily
+          with the finest ingredients.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <nav class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="menu.html">Menu</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>123 Bakery Street, Food City</p>
+        <p>info@bakery.com</p>
+      </div>
+    </div>
+    <div class="footer-copy">
+      © 2024 Bakery Co. All Rights Reserved
+    </div>
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
