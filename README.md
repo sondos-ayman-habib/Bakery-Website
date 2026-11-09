@@ -100,3 +100,21 @@ used for educational purposes only (see `docs/notes.md`).
 ## License
 
 MIT, see [LICENSE](LICENSE).
+    
+## Screenshots
+
+### 1. Docker build success
+![Docker build success](docs/screenshots/01-docker-build.png)
+
+### 2. Container running (healthy)
+![Container running](docs/screenshots/02-container-running.png)
+
+### 3. Project working in the browser
+![Project in browser](docs/screenshots/03-project-in-browser.png)
+
+### 4. GitHub commits history
+![Commits history](docs/screenshots/04-commits-history.png)
+
+
+
+
