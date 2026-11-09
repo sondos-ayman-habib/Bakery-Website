@@ -1,25 +1,25 @@
-# Technical Notes
+ # Technical Notes
 
-## Biggest Docker problem I faced and how I solved it
+## 1. Biggest Docker Problem and How I Solved It
 
-The biggest problem was the size of the project. When I built the image, Docker
-reported a build context of about 142 MB, which was much larger than expected.
-I found that the `src/about/` folder contained two videos: the compressed
-`baking-process.mp4` (36 MB) and the original `videoplayback.mp4` (106 MB).
-The original file made the build slow and GitHub rejects files larger than 100 MB,
-so it would have blocked my push.
+**Biggest problem: large video files (build context and GitHub push).**
+When I first ran `docker build`, the build context was around 142 MB because the `src/about/` folder had two videos: the original `videoplayback.mp4` (106 MB) and `baking-process.mp4` (36 MB). This made the build slow, and GitHub rejects any file over 100 MB, so it would have blocked my push.
 
-I solved it by compressing the video, keeping only `baking-process.mp4` inside
-`src/`, and moving the original file outside the repository. After that the build
-context became smaller and the push to GitHub worked.
+**Solution:** I compressed the video, kept only `baking-process.mp4` in the project, and moved the heavy original file outside the repository before pushing.
 
-A smaller issue was the terminal output getting scrambled during `docker build`.
-I used `docker build --progress=plain` to get clean, readable output for screenshots.
+### Other issues
 
-## Most important Git/GitHub lesson
+* **Serving the website with Nginx:** I used a multi-stage build (a Node Alpine build stage and an Nginx 1.27 Alpine runtime stage) so that the Node tools are not included in the final image, and added a `HEALTHCHECK` so the container shows as `Up (healthy)` in `docker ps` (commit `docker: add multi-stage Dockerfile with nginx and healthcheck`).
+* **Image size:** The final image is about 388 MB on disk (177 MB compressed). Roughly 53 MB is the Nginx Alpine base, and most of the rest (about 158 MB) is the website's own images and video copied from `src/`.
+* **Terminal output cleanup:** The output of `docker build` was cluttered, so I used `docker build --progress=plain` to get clean text for my screenshots.
 
-Git works in two steps: `git commit` only saves my work on my own computer, and
-`git push` is what publishes it to GitHub. I also learned that GitHub blocks files
-over 100 MB, so large files must be checked before the first commit. Finally,
-I learned to make small commits with clear messages (feat, docker, chore, docs)
-so the history shows real progress. 
+## 2. Most Important Git/GitHub Lesson
+
+**Most important lesson: `git commit` and `git push` are two different steps.**
+`git commit` only saves a snapshot on my own computer, while `git push` is what publishes it to GitHub. Related to this, I learned to check file sizes before committing, because GitHub blocks files over 100 MB.
+
+### Other lessons
+
+* **Small, logical commits:** I split the work into commits with clear prefixes (`feat:`, `docker:`, `chore:`, `docs:`) so the history shows real progress.
+* **Clean repository:** I set up `.gitignore` from the first commit to keep unnecessary files out.
+* **CI feedback:** The GitHub Actions workflow shows a green checkmark on the latest commits, which confirms the Docker image builds in a clean environment.
